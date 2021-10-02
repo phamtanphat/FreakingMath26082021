@@ -1,18 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D25400"
+    android:id="@+id/linearContainer"
     tools:context=".MainActivity">
 
     <TextView
-        android:textColor="#f20"
-        android:textStyle="bold"
+        android:textColor="#ffff"
+        android:layout_marginRight="5dp"
         android:fontFamily="@font/joesefont"
-        android:textSize="30sp"
+        android:textSize="25sp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/textViewScore"
+        android:text="0"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_height="wrap_content"/>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/textViewScore"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:weightSum="3"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="2.1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <TextView
+                android:textColor="#ffff"
+                android:id="@+id/textViewCalculate"
+                android:textSize="45sp"
+                android:fontFamily="@font/joesefont"
+                android:text="1 + 4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="#ffff"
+                android:layout_marginTop="20dp"
+                android:id="@+id/textViewResult"
+                android:textSize="45sp"
+                android:fontFamily="@font/joesefont"
+                android:text="= 7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_weight="0.9"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <ImageButton
+                android:id="@+id/imageButtonTrue"
+                android:background="@color/white"
+                android:src="@drawable/ic_true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageButton
+                android:id="@+id/imageButtonFalse"
+                android:layout_marginLeft="20dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
