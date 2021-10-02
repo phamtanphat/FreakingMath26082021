@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton mImgTrue, mImgFalse;
     Random mRandom;
     int mSt1, mSt2, mResult;
+    boolean mIsTrue;
+    String mCalculate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,24 +46,33 @@ public class MainActivity extends AppCompatActivity {
 
         int index = mRandom.nextInt(4);
 
+        // random cho ket qua nen dung hay sai
+        mIsTrue = mRandom.nextBoolean();
+
         switch (index) {
             case 0:
                 mResult = mSt1 - mSt2;
-                mTvCalculate.setText(mSt1 + " - " + mSt2);
+                mCalculate = " - ";
                 break;
             case 1:
                 mResult = mSt1 + mSt2;
-                mTvCalculate.setText(mSt1 + " + " + mSt2);
+                mCalculate = " + ";
                 break;
             case 2:
                 mResult = mSt1 * mSt2;
-                mTvCalculate.setText(mSt1 + " x " + mSt2);
+                mCalculate = " * ";
                 break;
             case 3:
                 mResult = mSt1 / mSt2;
-                mTvCalculate.setText(mSt1 + " / " + mSt2);
+                mCalculate = " / ";
                 break;
         }
+
+        if (!mIsTrue) {
+            mResult += mRandom.nextInt(10) + 1;
+        }
+
+        mTvCalculate.setText(mSt1 + mCalculate + mSt2);
         mTvResult.setText("= " + mResult);
 
 
