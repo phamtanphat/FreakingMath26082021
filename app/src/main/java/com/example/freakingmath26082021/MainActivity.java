@@ -4,43 +4,66 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    RelativeLayout mRelativeContainer;
+    TextView mTvScore, mTvCalculate, mTvResult;
+    ImageButton mImgTrue, mImgFalse;
+    Random mRandom;
+    int mSt1, mSt2, mResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
-        Làm tròn 0.5
-        int number1 = Math.round(1.2f);
-        Log.d("BBB","Hàm round " + number1);
+        mRelativeContainer = findViewById(R.id.relativeContainer);
+        mTvScore = findViewById(R.id.textViewScore);
+        mTvCalculate = findViewById(R.id.textViewCalculate);
+        mTvResult = findViewById(R.id.textViewResult);
+        mImgTrue = findViewById(R.id.imageButtonTrue);
+        mImgFalse = findViewById(R.id.imageButtonFalse);
 
-        Làm tròn lên
-        double number2 = Math.ceil(1.000001);
-        Log.d("BBB","Hàm ceil " + number2);
+        // random so thu1 va so thu2
+        mRandom = new Random();
+        mSt1 = mRandom.nextInt(10) + 1;
+        mSt2 = mRandom.nextInt(10) + 1;
 
-        Làm tròn xuống
-        double number3 = Math.floor(1.999999);
-        Log.d("BBB","Hàm floor " + number3);
+        // random cho bai toan
+        // 0 : phep tru
+        // 1 : phep cong
+        // 2 : phep nhan
+        // 3 : phep chia
 
-        Làm tròn các số phần thập phân
-        String result = String.format("%.2f", 1.23436);
-        Log.d("BBB",result);
+        int index = mRandom.nextInt(4);
 
-        Random
-        double number4 = Math.round(Math.random() * 10);
-        Log.d("BBB",number4 + "");
-        */
+        switch (index) {
+            case 0:
+                mResult = mSt1 - mSt2;
+                mTvCalculate.setText(mSt1 + " - " + mSt2);
+                break;
+            case 1:
+                mResult = mSt1 + mSt2;
+                mTvCalculate.setText(mSt1 + " + " + mSt2);
+                break;
+            case 2:
+                mResult = mSt1 * mSt2;
+                mTvCalculate.setText(mSt1 + " x " + mSt2);
+                break;
+            case 3:
+                mResult = mSt1 / mSt2;
+                mTvCalculate.setText(mSt1 + " / " + mSt2);
+                break;
+        }
+        mTvResult.setText("= " + mResult);
 
-        Random random = new Random();
-        // 5 -> 10
-        // random.nextInt(max - min + 1) + smin
-        int number5 = random.nextInt(10 - 5 + 1) + 5;
-        Log.d("BBB",number5 + "");
 
     }
 }
